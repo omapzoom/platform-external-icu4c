@@ -115,7 +115,11 @@ c_includes := \
 local_cflags := '-DICU_DATA_DIR_PREFIX_ENV_VAR="ANDROID_ROOT"'
 local_cflags += '-DICU_DATA_DIR="/usr/icu"'
 
+ifndef NEEDS_ARM_ERRATA_754319_754320
 local_cflags += -D_REENTRANT -DU_COMMON_IMPLEMENTATION -O3
+else
+local_cflags += -D_REENTRANT -DU_COMMON_IMPLEMENTATION -O2
+endif
 local_ldlibs := -lpthread -lm
 
 
